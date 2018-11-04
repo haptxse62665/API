@@ -9,12 +9,30 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API.Data;
+using API.Models;
 
 namespace API.Controllers
 {
     public class HostController : ApiController
     {
         private EntityConnection db = new EntityConnection();
+
+
+        //GET: student infor by user name of tbl_User
+        [Route("api/host/getHostByHostID")]
+        [HttpGet]
+        public HostViewModel GetHostByID(int id)
+        {
+            var host = db.tbl_Host.Find(id);
+            return new HostViewModel
+            {
+                ContactNumber = host.ContactNumber,
+                Email = host.Email,
+                HostName = host.HostName,
+                Location = host.Location
+            };
+        }
+
 
         // GET: api/Host
         public IQueryable<tbl_Host> Gettbl_Host()

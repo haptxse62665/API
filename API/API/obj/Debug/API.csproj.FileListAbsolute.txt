@@ -121,8 +121,13 @@ C:\Users\haptxse62665\Desktop\StudyAPI\API\API\bin\Microsoft.AI.DependencyCollec
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\bin\Microsoft.AI.Web.xml
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.csprojAssemblyReference.cache
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.csproj.CoreCompileInputs.cache
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.csproj.CopyComplete
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.dll
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.pdb
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.Migrations.InitialCreate.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.csproj.GenerateResource.cache
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.Migrations.InitDB.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.csprojAssemblyReference.cache
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.Migrations.InitDB1.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Debug\API.Migrations.InitDB2.resources

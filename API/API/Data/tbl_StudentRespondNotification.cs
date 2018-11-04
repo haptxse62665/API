@@ -12,7 +12,7 @@ namespace API.Data
 
         public int StudentID { get; set; }
 
-        [Column(TypeName = "date")]
+        [Column(TypeName = "Datetime2")]
         public DateTime TimeRequest { get; set; }
 
         public string Coordinate { get; set; }
@@ -20,15 +20,15 @@ namespace API.Data
         [Column(TypeName = "date")]
         public DateTime DateCreated { get; set; }
 
-        public int? CreatedByUserID { get; set; }
+        [StringLength(128)]
+        public string CreatedByUserID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? UpdateDay { get; set; }
 
         public int? UpdateByUserID { get; set; }
-
-        [Required]
-        public string Status { get; set; }
+        
+        public bool Status { get; set; }
 
         [ForeignKey ("StudentID")]
         public virtual tlb_Student tlb_Student { get; set; }

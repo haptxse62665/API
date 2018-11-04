@@ -9,6 +9,9 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API.Data;
+using API.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace API.Controllers
 {
@@ -16,11 +19,160 @@ namespace API.Controllers
     {
         private EntityConnection db = new EntityConnection();
 
+
+        //Get: DYC infor by user id
+        [Route("api/dyc/inforByUserName")]
+        [HttpGet]
+        public UserViewModel GetUserInforByUserName(string username)
+        {
+            var _userManager = Request.GetOwinContext().GetUserManager<AspNetUserManager>();
+            var user = _userManager.FindByEmailAsync(username).Result;
+            string rolename = _userManager.GetRoles(user.Id).FirstOrDefault();
+            if (rolename.Equals("DYC"))
+            {
+                var dyc = db.tbl_DYC.Where(p => p.NetUsersID == user.Id && p.Status).FirstOrDefault();
+                return new DYCViewModel
+                {
+                    DYCID = dyc.DYCID,
+                    Email = user.Email,
+                    FacultyId = dyc.FacultyId,
+                    FullName = user.FullName,
+                    Id = dyc.Id, //id of table DYC
+                    PhoneNumber = user.PhoneNumber,
+                    RoleName = rolename
+                };
+            }
+            else
+            {
+                if (rolename.Equals("Admin"))
+                {
+                    return new UserViewModel
+                    {
+                        Email = user.Email,
+                        FullName = user.FullName,
+                        PhoneNumber = user.PhoneNumber,
+                        RoleName = rolename
+                    };
+                }
+            }
+            return null;
+            
+        }
+
+
+
+        //Get: List country and munber of student
+        [Route("api/DYCAndAdmin/listCountryAndNumberStudent")]
+        [HttpGet]
+        public List<CountryViewModel> GetListCountry(int facultyId)
+        {
+            List<CountryViewModel> countryList = new List<CountryViewModel>();
+            var countrys = db.tbl_Country.ToList();
+            if (facultyId > 0)
+            {
+                foreach (var item in countrys)
+                {
+                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID && p.FacultyId == facultyId).Count();
+                    if(numberStudent > 0)
+                    {
+                        countryList.Add(new CountryViewModel { ID = item.ID, CountryName = item.CountryName, NumberOfStudent = numberStudent, ImageURL = item.ImageURL});
+                    }
+                }
+                return countryList;
+            }
+            else
+            {
+                foreach (var item in countrys)
+                {
+                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID).Count();
+                    if (numberStudent > 0)
+                    {
+                        countryList.Add(new CountryViewModel { ID = item.ID, CountryName = item.CountryName, NumberOfStudent = numberStudent, ImageURL = item.ImageURL });
+                    }
+                }
+                return countryList;
+            }
+            
+        }
+
+
+        //Get: List Host and munber of student
+        [Route("api/DYCAndAdmin/listHostAndNumberStudent")]
+        [HttpGet]
+        public List<HostViewModel> GetListHost(int facultyId, int countryId)
+        {
+            List<HostViewModel> hostList = new List<HostViewModel>();
+            var hosts = db.tbl_Host.ToList();
+            if (facultyId > 0)
+            {
+                foreach (var item in hosts)
+                {
+                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == countryId && p.FacultyId == facultyId && p.HostID == item.ID).Count();
+                    if (numberStudent > 0)
+                    {
+                        hostList.Add(new HostViewModel { HostID = item.ID, NumberOfStudent = numberStudent, HostName = item.HostName });
+                    }
+                }
+                return hostList;
+            }
+            else
+            {
+                foreach (var item in hosts)
+                {
+                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == countryId && p.HostID == item.ID).Count();
+                    if (numberStudent > 0)
+                    {
+                        hostList.Add(new HostViewModel { HostID = item.ID, NumberOfStudent = numberStudent, HostName = item.HostName });
+                    }
+                }
+                return hostList;
+            }
+
+        }
+
+
+        //Get: List Host and munber of student
+        [Route("api/DYCAndAdmin/listHStudentInHost")]
+        [HttpGet]
+        public List<StudentViewModel> GetListStudent(int facultyId, int hostID)
+        {
+            List<StudentViewModel> studentList = new List<StudentViewModel>();
+            if (facultyId > 0)
+            {
+                    var students = db.tlb_Student.Where(p => p.HostID == hostID && p.FacultyId == facultyId).ToList();
+                foreach (var item in students)
+                {
+                    studentList.Add(new StudentViewModel {StudentID = item.StudentID, FullName= item.AspNetUser.FullName,
+                        FacultyName = item.tbl_Faculty.FacultyName, UserName = item.AspNetUser.UserName });
+                }
+                return studentList;
+            }
+            else
+            {
+                var students = db.tlb_Student.Where(p => p.HostID == hostID).ToList();
+                foreach (var item in students)
+                {
+                    studentList.Add(new StudentViewModel { StudentID = item.StudentID, FullName = item.AspNetUser.FullName,
+                        FacultyName = item.tbl_Faculty.FacultyName, UserName = item.AspNetUser.UserName});
+                }
+                return studentList;
+            }
+
+        }
+
+
+
+
+
+
+
         // GET: api/DYC
         public IQueryable<tbl_DYC> Gettbl_DYC()
         {
             return db.tbl_DYC;
         }
+
+
 
         // GET: api/DYC/5
         [ResponseType(typeof(tbl_DYC))]

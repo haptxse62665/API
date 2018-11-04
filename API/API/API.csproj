@@ -241,6 +241,7 @@
     <Compile Include="Controllers\HostController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentRespondNotificationController.cs" />
+    <Compile Include="Controllers\StudentResponseController.cs" />
     <Compile Include="Controllers\UserSendNotificationController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Data\AspNetUser.cs" />
@@ -249,18 +250,39 @@
     <Compile Include="Data\tbl_DYC.cs" />
     <Compile Include="Data\tbl_Faculty.cs" />
     <Compile Include="Data\tbl_Host.cs" />
-    <Compile Include="Data\tbl_StudentResponse.cs" />
     <Compile Include="Data\tbl_StudentRespondNotification.cs" />
+    <Compile Include="Data\tbl_StudentResponse.cs" />
     <Compile Include="Data\tbl_UserSendNotification.cs" />
     <Compile Include="Data\tlb_Student.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811030007116_InitialCreate.cs" />
+    <Compile Include="Migrations\201811030007116_InitialCreate.Designer.cs">
+      <DependentUpon>201811030007116_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811040830260_InitDB.cs" />
+    <Compile Include="Migrations\201811040830260_InitDB.Designer.cs">
+      <DependentUpon>201811040830260_InitDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811041245500_InitDB1.cs" />
+    <Compile Include="Migrations\201811041245500_InitDB1.Designer.cs">
+      <DependentUpon>201811041245500_InitDB1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811041300484_InitDB2.cs" />
+    <Compile Include="Migrations\201811041300484_InitDB2.Designer.cs">
+      <DependentUpon>201811041300484_InitDB2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CountryViewModel.cs" />
+    <Compile Include="Models\DYCViewModel.cs" />
+    <Compile Include="Models\HostViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\UserSentNotificationViewModel.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -357,6 +379,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201811030007116_InitialCreate.resx">
+      <DependentUpon>201811030007116_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811040830260_InitDB.resx">
+      <DependentUpon>201811040830260_InitDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811041245500_InitDB1.resx">
+      <DependentUpon>201811041245500_InitDB1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811041300484_InitDB2.resx">
+      <DependentUpon>201811041300484_InitDB2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

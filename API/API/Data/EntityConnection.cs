@@ -22,6 +22,7 @@ namespace API.Data
         public virtual DbSet<tbl_StudentRespondNotification> tbl_StudentRespondNotification { get; set; }
         public virtual DbSet<tbl_UserSendNotification> tbl_UserSendNotification { get; set; }
         public virtual DbSet<tlb_Student> tlb_Student { get; set; }
+        public virtual DbSet<tbl_StudentResponse> tbl_StudentResponse { get; set; }
         public static EntityConnection Create()
         {
             return new EntityConnection();

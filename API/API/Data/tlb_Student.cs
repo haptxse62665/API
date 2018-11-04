@@ -13,8 +13,10 @@ namespace API.Data
         public tlb_Student()
         {
             tbl_StudentRespondNotification = new HashSet<tbl_StudentRespondNotification>();
+            tbl_StudentResponse = new HashSet<tbl_StudentResponse>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         public int FacultyId { get; set; }
@@ -62,6 +64,7 @@ namespace API.Data
 
         [StringLength(128)]
         public string StudentID { get; set; }
+
         [ForeignKey ("NetUsersID")]
         public virtual AspNetUser AspNetUser { get; set; }
 
@@ -73,5 +76,8 @@ namespace API.Data
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_StudentRespondNotification> tbl_StudentRespondNotification { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_StudentResponse> tbl_StudentResponse { get; set; }
     }
 }

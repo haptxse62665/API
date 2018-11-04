@@ -126,3 +126,8 @@ C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.csproj.CopyComple
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.dll
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.pdb
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.csprojAssemblyReference.cache
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitDB.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.csproj.GenerateResource.cache
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitDB1.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitDB2.resources

@@ -8,6 +8,12 @@ namespace API.Data
 
     public partial class tbl_UserSendNotification
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tbl_UserSendNotification()
+        {
+            tbl_StudentResponse = new HashSet<tbl_StudentResponse>();
+        }
+
         public int ID { get; set; }
 
         [Required]
@@ -44,5 +50,8 @@ namespace API.Data
 
         [ForeignKey ("HostID")]
         public virtual tbl_Host tbl_Host { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_StudentResponse> tbl_StudentResponse { get; set; }
     }
 }
