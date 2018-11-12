@@ -19,10 +19,13 @@ namespace API.Data
         public virtual DbSet<tbl_DYC> tbl_DYC { get; set; }
         public virtual DbSet<tbl_Faculty> tbl_Faculty { get; set; }
         public virtual DbSet<tbl_Host> tbl_Host { get; set; }
-        public virtual DbSet<tbl_StudentRespondNotification> tbl_StudentRespondNotification { get; set; }
+        public virtual DbSet<tbl_StudentEmergency> tbl_StudentEmergency { get; set; }
         public virtual DbSet<tbl_UserSendNotification> tbl_UserSendNotification { get; set; }
         public virtual DbSet<tlb_Student> tlb_Student { get; set; }
         public virtual DbSet<tbl_StudentResponse> tbl_StudentResponse { get; set; }
+        public virtual DbSet<tbl_AdminSendNotification> tbl_AdminSendNotification { get; set; }
+        public virtual DbSet<tbl_NotificationHost> tbl_NotificationHost { get; set; }
+        public virtual DbSet<tbl_AdminNotificationFaculty> tbl_AdminNotificationFaculty { get; set; }
         public static EntityConnection Create()
         {
             return new EntityConnection();

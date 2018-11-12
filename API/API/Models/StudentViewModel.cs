@@ -18,6 +18,7 @@ namespace API.Models
         public string CountryName { get; set; }
         public string FacultyName { get; set; }
         public string HostName { get; set; }
+       
 
     }
 }

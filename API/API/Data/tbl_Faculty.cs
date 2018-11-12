@@ -13,6 +13,7 @@ namespace API.Data
         {
             tbl_DYC = new HashSet<tbl_DYC>();
             tlb_Student = new HashSet<tlb_Student>();
+            tbl_AdminNotificationFaculty = new HashSet<tbl_AdminNotificationFaculty>();
         }
 
         public int ID { get; set; }
@@ -37,5 +38,8 @@ namespace API.Data
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tlb_Student> tlb_Student { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_AdminNotificationFaculty> tbl_AdminNotificationFaculty { get; set; }
     }
 }

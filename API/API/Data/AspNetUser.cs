@@ -18,6 +18,7 @@ namespace API.Data
             tbl_DYC = new HashSet<tbl_DYC>();
             tbl_UserSendNotification = new HashSet<tbl_UserSendNotification>();
             tlb_Student = new HashSet<tlb_Student>();
+            tbl_AdminSendNotification = new HashSet<tbl_AdminSendNotification>();
         }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<AspNetUser> manager, string authenticationType)
         {
@@ -46,6 +47,9 @@ namespace API.Data
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tlb_Student> tlb_Student { get; set; }
-        
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_AdminSendNotification> tbl_AdminSendNotification { get; set; }
+
     }
 }

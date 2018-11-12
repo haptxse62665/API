@@ -234,23 +234,27 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminSendNotificationController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\DYCController.cs" />
     <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HostController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
-    <Compile Include="Controllers\StudentRespondNotificationController.cs" />
+    <Compile Include="Controllers\StudentEmergencyController.cs" />
     <Compile Include="Controllers\StudentResponseController.cs" />
     <Compile Include="Controllers\UserSendNotificationController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Data\AspNetUser.cs" />
     <Compile Include="Data\EntityConnection.cs" />
+    <Compile Include="Data\tbl_AdminNotificationFaculty.cs" />
+    <Compile Include="Data\tbl_AdminSendNotification.cs" />
     <Compile Include="Data\tbl_Country.cs" />
     <Compile Include="Data\tbl_DYC.cs" />
     <Compile Include="Data\tbl_Faculty.cs" />
     <Compile Include="Data\tbl_Host.cs" />
-    <Compile Include="Data\tbl_StudentRespondNotification.cs" />
+    <Compile Include="Data\tbl_NotificationHost.cs" />
+    <Compile Include="Data\tbl_StudentEmergency.cs" />
     <Compile Include="Data\tbl_StudentResponse.cs" />
     <Compile Include="Data\tbl_UserSendNotification.cs" />
     <Compile Include="Data\tlb_Student.cs" />
@@ -273,13 +277,66 @@
     <Compile Include="Migrations\201811041300484_InitDB2.Designer.cs">
       <DependentUpon>201811041300484_InitDB2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811050752170_InitialCreate1.cs" />
+    <Compile Include="Migrations\201811050752170_InitialCreate1.Designer.cs">
+      <DependentUpon>201811050752170_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050757578_InitialCreate2.cs" />
+    <Compile Include="Migrations\201811050757578_InitialCreate2.Designer.cs">
+      <DependentUpon>201811050757578_InitialCreate2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811050840210_InitialCreate3.cs" />
+    <Compile Include="Migrations\201811050840210_InitialCreate3.Designer.cs">
+      <DependentUpon>201811050840210_InitialCreate3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811060220243_InitialCreate4.cs" />
+    <Compile Include="Migrations\201811060220243_InitialCreate4.Designer.cs">
+      <DependentUpon>201811060220243_InitialCreate4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811060224483_InitialCreate5.cs" />
+    <Compile Include="Migrations\201811060224483_InitialCreate5.Designer.cs">
+      <DependentUpon>201811060224483_InitialCreate5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811060256134_InitialCreate6.cs" />
+    <Compile Include="Migrations\201811060256134_InitialCreate6.Designer.cs">
+      <DependentUpon>201811060256134_InitialCreate6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811060307521_InitialCreate7.cs" />
+    <Compile Include="Migrations\201811060307521_InitialCreate7.Designer.cs">
+      <DependentUpon>201811060307521_InitialCreate7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811061148589_InitialCreate8.cs" />
+    <Compile Include="Migrations\201811061148589_InitialCreate8.Designer.cs">
+      <DependentUpon>201811061148589_InitialCreate8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811061318585_InitialCreate9.cs" />
+    <Compile Include="Migrations\201811061318585_InitialCreate9.Designer.cs">
+      <DependentUpon>201811061318585_InitialCreate9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811080409325_InitialCreate10.cs" />
+    <Compile Include="Migrations\201811080409325_InitialCreate10.Designer.cs">
+      <DependentUpon>201811080409325_InitialCreate10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811080420131_InitialCreate11.cs" />
+    <Compile Include="Migrations\201811080420131_InitialCreate11.Designer.cs">
+      <DependentUpon>201811080420131_InitialCreate11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811110824261_InitialCreate12.cs" />
+    <Compile Include="Migrations\201811110824261_InitialCreate12.Designer.cs">
+      <DependentUpon>201811110824261_InitialCreate12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminSentNotifiViewModel.cs" />
     <Compile Include="Models\CountryViewModel.cs" />
     <Compile Include="Models\DYCViewModel.cs" />
+    <Compile Include="Models\FacultyViewModel.cs" />
     <Compile Include="Models\HostViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ResponseViewModel.cs" />
+    <Compile Include="Models\StudentEmergencyViewModel.cs" />
+    <Compile Include="Models\StudentResponseViewModel.cs" />
     <Compile Include="Models\StudentViewModel.cs" />
     <Compile Include="Models\UserSentNotificationViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -392,6 +449,42 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811041300484_InitDB2.resx">
       <DependentUpon>201811041300484_InitDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050752170_InitialCreate1.resx">
+      <DependentUpon>201811050752170_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050757578_InitialCreate2.resx">
+      <DependentUpon>201811050757578_InitialCreate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811050840210_InitialCreate3.resx">
+      <DependentUpon>201811050840210_InitialCreate3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811060220243_InitialCreate4.resx">
+      <DependentUpon>201811060220243_InitialCreate4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811060224483_InitialCreate5.resx">
+      <DependentUpon>201811060224483_InitialCreate5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811060256134_InitialCreate6.resx">
+      <DependentUpon>201811060256134_InitialCreate6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811060307521_InitialCreate7.resx">
+      <DependentUpon>201811060307521_InitialCreate7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811061148589_InitialCreate8.resx">
+      <DependentUpon>201811061148589_InitialCreate8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811061318585_InitialCreate9.resx">
+      <DependentUpon>201811061318585_InitialCreate9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811080409325_InitialCreate10.resx">
+      <DependentUpon>201811080409325_InitialCreate10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811080420131_InitialCreate11.resx">
+      <DependentUpon>201811080420131_InitialCreate11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811110824261_InitialCreate12.resx">
+      <DependentUpon>201811110824261_InitialCreate12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

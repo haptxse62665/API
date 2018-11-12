@@ -9,12 +9,32 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API.Data;
+using API.Models;
 
 namespace API.Controllers
 {
     public class FacultyController : ApiController
     {
         private EntityConnection db = new EntityConnection();
+
+
+
+        //Get: GEt All list Faculty
+        [Route("api/faculty/listAllFaculty")]
+        [HttpGet]
+        public List<FacultyViewModel> GetListFaculty()
+        {
+            var facultyList = db.tbl_Faculty.Where( p=> p.Status).ToList();
+            List<FacultyViewModel> list = new List<FacultyViewModel>();
+            foreach (var item in facultyList)
+            {
+                list.Add(new FacultyViewModel{ FacultyName = item.FacultyName, ID = item.ID});
+            }
+            return list;
+
+        }
+
+
 
         // GET: api/Faculty
         public IQueryable<tbl_Faculty> Gettbl_Faculty()

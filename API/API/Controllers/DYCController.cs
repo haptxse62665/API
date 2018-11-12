@@ -37,9 +37,10 @@ namespace API.Controllers
                     Email = user.Email,
                     FacultyId = dyc.FacultyId,
                     FullName = user.FullName,
-                    Id = dyc.Id, //id of table DYC
+                    Id = dyc.Id, 
                     PhoneNumber = user.PhoneNumber,
-                    RoleName = rolename
+                    RoleName = rolename,
+                    UserID = user.Id
                 };
             }
             else
@@ -51,7 +52,9 @@ namespace API.Controllers
                         Email = user.Email,
                         FullName = user.FullName,
                         PhoneNumber = user.PhoneNumber,
-                        RoleName = rolename
+                        RoleName = rolename,
+                        UserID = user.Id,
+                        UserName = user.UserName
                     };
                 }
             }
@@ -72,7 +75,7 @@ namespace API.Controllers
             {
                 foreach (var item in countrys)
                 {
-                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID && p.FacultyId == facultyId).Count();
+                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID && p.FacultyId == facultyId && p.Status).Count();
                     if(numberStudent > 0)
                     {
                         countryList.Add(new CountryViewModel { ID = item.ID, CountryName = item.CountryName, NumberOfStudent = numberStudent, ImageURL = item.ImageURL});
@@ -84,7 +87,7 @@ namespace API.Controllers
             {
                 foreach (var item in countrys)
                 {
-                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID).Count();
+                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID && p.Status).Count();
                     if (numberStudent > 0)
                     {
                         countryList.Add(new CountryViewModel { ID = item.ID, CountryName = item.CountryName, NumberOfStudent = numberStudent, ImageURL = item.ImageURL });
@@ -107,7 +110,7 @@ namespace API.Controllers
             {
                 foreach (var item in hosts)
                 {
-                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == countryId && p.FacultyId == facultyId && p.HostID == item.ID).Count();
+                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == countryId && p.FacultyId == facultyId && p.HostID == item.ID && p.Status).Count();
                     if (numberStudent > 0)
                     {
                         hostList.Add(new HostViewModel { HostID = item.ID, NumberOfStudent = numberStudent, HostName = item.HostName });
@@ -119,7 +122,7 @@ namespace API.Controllers
             {
                 foreach (var item in hosts)
                 {
-                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == countryId && p.HostID == item.ID).Count();
+                    int numberStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == countryId && p.HostID == item.ID && p.Status).Count();
                     if (numberStudent > 0)
                     {
                         hostList.Add(new HostViewModel { HostID = item.ID, NumberOfStudent = numberStudent, HostName = item.HostName });
@@ -131,34 +134,7 @@ namespace API.Controllers
         }
 
 
-        //Get: List Host and munber of student
-        [Route("api/DYCAndAdmin/listHStudentInHost")]
-        [HttpGet]
-        public List<StudentViewModel> GetListStudent(int facultyId, int hostID)
-        {
-            List<StudentViewModel> studentList = new List<StudentViewModel>();
-            if (facultyId > 0)
-            {
-                    var students = db.tlb_Student.Where(p => p.HostID == hostID && p.FacultyId == facultyId).ToList();
-                foreach (var item in students)
-                {
-                    studentList.Add(new StudentViewModel {StudentID = item.StudentID, FullName= item.AspNetUser.FullName,
-                        FacultyName = item.tbl_Faculty.FacultyName, UserName = item.AspNetUser.UserName });
-                }
-                return studentList;
-            }
-            else
-            {
-                var students = db.tlb_Student.Where(p => p.HostID == hostID).ToList();
-                foreach (var item in students)
-                {
-                    studentList.Add(new StudentViewModel { StudentID = item.StudentID, FullName = item.AspNetUser.FullName,
-                        FacultyName = item.tbl_Faculty.FacultyName, UserName = item.AspNetUser.UserName});
-                }
-                return studentList;
-            }
-
-        }
+      
 
 
 

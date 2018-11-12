@@ -9,12 +9,47 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using API.Data;
+using API.Models;
 
 namespace API.Controllers
 {
     public class CountryController : ApiController
     {
         private EntityConnection db = new EntityConnection();
+
+        //GET: Get list all country and number of student arrival 
+        [Route("api/country/listCountryAndArrivedStudent")]
+        [HttpGet]
+        public List<CountryViewModel> GetListCountry(int facultyID)
+        {
+            List<CountryViewModel> list = new List<CountryViewModel>();
+            var countryList = db.tbl_Country.Where(p => p.Status).ToList();
+            if(facultyID > 0)
+            {
+                foreach (var item in countryList)
+                {
+                    int numberStudentArrived = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID &&
+                    p.FacultyId == facultyID && p.Arrival && p.Status).Count();
+                    int totalStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID &&
+                    p.FacultyId == facultyID && p.Status).Count();
+                    if(totalStudent > 0)
+                    list.Add(new CountryViewModel {CountryName = item.CountryName, ID = item.ID, NumberArrivalPerTotal = numberStudentArrived+"/"+ totalStudent, ImageURL= item.ImageURL});
+                }
+            }
+            else
+            {
+                foreach (var item in countryList)
+                {
+                    int numberStudentArrived = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID  && p.Arrival && p.Status).Count();
+                    int totalStudent = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.ID == item.ID && p.Status).Count();
+                    if (totalStudent > 0)
+                    list.Add(new CountryViewModel { CountryName = item.CountryName, ID = item.ID, NumberArrivalPerTotal = numberStudentArrived + "/" + totalStudent, ImageURL = item.ImageURL });
+                }
+            }
+            return list;
+           
+        }
+
 
         // GET: api/Country
         public IQueryable<tbl_Country> Gettbl_Country()

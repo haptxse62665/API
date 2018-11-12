@@ -12,32 +12,32 @@ namespace API.Data
         public tbl_UserSendNotification()
         {
             tbl_StudentResponse = new HashSet<tbl_StudentResponse>();
+            tbl_NotificationHost = new HashSet<tbl_NotificationHost>();
         }
 
         public int ID { get; set; }
-
-        [Required]
-        [StringLength(128)]
-        public string UsersId { get; set; }
-
+        
         [Required]
         public string TitleNotification { get; set; }
 
         [Required]
         public string ContentNotification { get; set; }
-
-        public int HostID { get; set; }
-
+        
         public string LevelEmergency { get; set; }
 
         [Column(TypeName = "date")]
+        public DateTime DateHazard  { get; set; }
+
+        [Column(TypeName = "DateTime2")]
         public DateTime? DateCreated { get; set; }
 
+        [StringLength(128)]
         public string CreateByUserID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime? UpdateDay { get; set; }
 
+        [StringLength(128)]
         public string UpdateByUserID { get; set; }
 
         public bool Status { get; set; }
@@ -47,11 +47,11 @@ namespace API.Data
 
         [ForeignKey ("NetUsersID")]
         public virtual AspNetUser AspNetUser { get; set; }
-
-        [ForeignKey ("HostID")]
-        public virtual tbl_Host tbl_Host { get; set; }
-
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_StudentResponse> tbl_StudentResponse { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tbl_NotificationHost> tbl_NotificationHost { get; set; }
     }
 }

@@ -17,23 +17,24 @@ namespace API.Controllers
     {
         private EntityConnection db = new EntityConnection();
 
-
+        //GEt: list student response by hostID, notifi
         //Get: Infor of notification from DYC/ADmin by host ID and studentID and student response != waitting 
         [Route("api/userSendNotification/inforByStudentID")]
         [HttpGet]
         public List<UserSentNotificationViewModel> GetNotificationByHostID(int studentID)
         {
             List<UserSentNotificationViewModel> listNotification = new List<UserSentNotificationViewModel>();
-            var notification = db.tbl_StudentResponse.Where(p => p.StudentID == studentID && p.ContentResponse.Equals("Waiting")).ToList();
+            var notification = db.tbl_StudentResponse.Where(p => p.StudentID == studentID && p.ContentResponse.Equals("Waiting") && p.Status).ToList();
             foreach (var item in notification)
             {
                 listNotification.Add(new UserSentNotificationViewModel
                 {
-                    DateCreated = item.TimeResponse,
+                    DateCreated = item.DateCreated,
                     ID = item.ID,
                     LevelEmergency = item.tbl_UserSendNotification.LevelEmergency,
-                    Location = item.tbl_UserSendNotification.tbl_Host.Location,
-                    TitleNotification = item.tbl_UserSendNotification.TitleNotification
+                    Location = db.tlb_Student.Find(studentID).tbl_Host.Location,
+                    TitleNotification = item.tbl_UserSendNotification.TitleNotification,
+                    
                 });
             }
 
@@ -44,7 +45,7 @@ namespace API.Controllers
         //GET : UPDATE Student response notification from DYC 
 
         [Route("api/student/updateStudentResponseStatus")]
-        [HttpGet]
+        [HttpPost]
         //id input is ID of StudentResponse table
         public IHttpActionResult UpdateStudentResponseStatus(int id, string status)
         {
@@ -54,19 +55,11 @@ namespace API.Controllers
         }
 
 
-        //GET : Create Student sent notification
+       
 
-        [Route("api/student/createStudentSentNotofication")]
-        [HttpGet]
-        public IHttpActionResult CreateStudentSentNotofication(int studentID, string Coordinate)
-        {
-            string userID = db.tlb_Student.Find(studentID).AspNetUser.Id;
-            tbl_StudentRespondNotification notifi = new tbl_StudentRespondNotification { Coordinate = Coordinate, StudentID = studentID,
-                CreatedByUserID = userID, Status = true, DateCreated = DateTime.Now, TimeRequest = DateTime.Now};
-            db.tbl_StudentRespondNotification.Add(notifi);
-            db.SaveChanges();
-            return Ok();
-        }
+
+
+       
 
 
 

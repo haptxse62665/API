@@ -12,7 +12,7 @@ namespace API.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tlb_Student()
         {
-            tbl_StudentRespondNotification = new HashSet<tbl_StudentRespondNotification>();
+            tbl_StudentRespondNotification = new HashSet<tbl_StudentEmergency>();
             tbl_StudentResponse = new HashSet<tbl_StudentResponse>();
         }
 
@@ -75,7 +75,7 @@ namespace API.Data
         public virtual tbl_Host tbl_Host { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_StudentRespondNotification> tbl_StudentRespondNotification { get; set; }
+        public virtual ICollection<tbl_StudentEmergency> tbl_StudentRespondNotification { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_StudentResponse> tbl_StudentResponse { get; set; }

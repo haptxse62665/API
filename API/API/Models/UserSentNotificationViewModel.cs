@@ -12,5 +12,8 @@ namespace API.Models
         public string LevelEmergency { get; set; }
         public DateTime ?DateCreated { get; set; }
         public string Location { get; set; }
+        public string ContentNotification { get; set; }
+        public int HostID { get; set; }
+        public DateTime DateHazard { get; set; }
     }
 }

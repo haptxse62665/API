@@ -11,7 +11,7 @@ namespace API.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tbl_Host()
         {
-            tbl_UserSendNotification = new HashSet<tbl_UserSendNotification>();
+            tbl_NotificationHost = new HashSet<tbl_NotificationHost>();
             tlb_Student = new HashSet<tlb_Student>();
         }
 
@@ -52,7 +52,7 @@ namespace API.Data
         public virtual tbl_Country tbl_Country { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_UserSendNotification> tbl_UserSendNotification { get; set; }
+        public virtual ICollection<tbl_NotificationHost> tbl_NotificationHost { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tlb_Student> tlb_Student { get; set; }

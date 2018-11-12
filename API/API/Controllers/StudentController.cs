@@ -24,17 +24,82 @@ namespace API.Controllers
         {
             return db.tlb_Student;
         }
-        //GET : GET ALL STUDENT 
-
-
-
-
-
-
+        //GET : GET lisst student arrival 
+        [Route("api/DYCAndAdmin/listStudentArrivalOrNot")]
+        [HttpGet]
+        public List<StudentViewModel> GetListStudentArrivalOrNot(int facultyId, string countryName)
+        {
+            List<StudentViewModel> studentList = new List<StudentViewModel>();
+            if (facultyId > 0)
+            {
+                var students = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.CountryName == countryName && p.FacultyId == facultyId && p.Status).ToList();
+                foreach (var item in students)
+                {
+                    studentList.Add(new StudentViewModel
+                    {
+                        FullName = item.AspNetUser.FullName,
+                        Arrival = item.Arrival,
+                        UserName = item.AspNetUser.UserName
+                    });
+                }
+                return studentList;
+            }
+            else
+            {
+                var students = db.tlb_Student.Where(p => p.tbl_Host.tbl_Country.CountryName == countryName && p.Status).ToList();
+                foreach (var item in students)
+                {
+                    studentList.Add(new StudentViewModel
+                    {
+                        FullName = item.AspNetUser.FullName,
+                        Arrival = item.Arrival,
+                        UserName = item.AspNetUser.UserName
+                    });
+                }
+                return studentList;
+            }
+        }
+        //Get: List Host and munber of student
+        [Route("api/DYCAndAdmin/listHStudentInHost")]
+        [HttpGet]
+        public List<StudentViewModel> GetListStudent(int facultyId, int hostID)
+        {
+            List<StudentViewModel> studentList = new List<StudentViewModel>();
+            if (facultyId > 0)
+            {
+                var students = db.tlb_Student.Where(p => p.HostID == hostID && p.FacultyId == facultyId && p.Status).ToList();
+                foreach (var item in students)
+                {
+                    studentList.Add(new StudentViewModel
+                    {
+                        StudentID = item.StudentID,
+                        FullName = item.AspNetUser.FullName,
+                        FacultyName = item.tbl_Faculty.FacultyName,
+                        UserName = item.AspNetUser.UserName
+                    });
+                }
+                return studentList;
+            }
+            else
+            {
+                var students = db.tlb_Student.Where(p => p.HostID == hostID && p.Status).ToList();
+                foreach (var item in students)
+                {
+                    studentList.Add(new StudentViewModel
+                    {
+                        StudentID = item.StudentID,
+                        FullName = item.AspNetUser.FullName,
+                        FacultyName = item.tbl_Faculty.FacultyName,
+                        UserName = item.AspNetUser.UserName
+                    });
+                }
+                return studentList;
+            }
+        }
         //GET: student infor by user name of tbl_User
         [Route("api/student/info")]
         [HttpGet]
-        public StudentViewModel GetUser(string username)
+        public StudentViewModel GetStudentInfor(string username)
         {
             var _userManager = Request.GetOwinContext().GetUserManager<AspNetUserManager>();
             var user = _userManager.FindByEmailAsync(username).Result;
@@ -49,7 +114,7 @@ namespace API.Controllers
                 StudentID = student.StudentID,
                 FullName = student.AspNetUser.FullName,
                 Email = student.AspNetUser.Email,
-                CountryName = student.tbl_Host.tbl_Country.CountryName,
+                CountryName = student.tbl_Host.tbl_Country.CountryName,    
                 CountryID = student.tbl_Host.CountryID,
                 FacultyID = student.FacultyId,
                 FacultyName = student.tbl_Faculty.FacultyName,
@@ -57,23 +122,11 @@ namespace API.Controllers
             };
         }
 
-        
 
-        //Parth : Update new phone number of DY student 
-        [Route("api/student/updateNewPhoneNumber")]
-        [HttpGet]
-        public IHttpActionResult UpdateNewPhoneNumber(int id, string phoneNumber)
-        {
-           db.tlb_Student.Find(id).NewPhoneNumber = phoneNumber;
-                db.SaveChanges();
-            return Ok();
-        }
-
-
-        //GET : UPDATE Arrival OF a student 
+        //GET : List country and number of arival student  
 
         [Route("api/student/updateArrival")]
-        [HttpGet]
+        [HttpPost]
         public IHttpActionResult UpdateArrival(int id)
         {
             db.tlb_Student.Find(id).Arrival = true;
@@ -81,15 +134,15 @@ namespace API.Controllers
             return Ok();
         }
 
-
-
-
-
-
-
-
-
-
+        //Parth : Update new phone number of DY student 
+        [Route("api/student/updateNewPhoneNumber")]
+        [HttpPost]
+        public IHttpActionResult UpdateNewPhoneNumber(int id, string phoneNumber)
+        {
+           db.tlb_Student.Find(id).NewPhoneNumber = phoneNumber;
+                db.SaveChanges();
+            return Ok();
+        }
 
         // GET: api/Student/5
         [ResponseType(typeof(tlb_Student))]

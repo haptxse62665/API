@@ -131,3 +131,15 @@ C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitDB
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.csproj.GenerateResource.cache
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitDB1.resources
 C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitDB2.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate1.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate2.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate3.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate4.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate5.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate6.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate7.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate8.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate9.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate10.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate11.resources
+C:\Users\haptxse62665\Desktop\StudyAPI\API\API\obj\Release\API.Migrations.InitialCreate12.resources
