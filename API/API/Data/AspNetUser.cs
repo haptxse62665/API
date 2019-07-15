@@ -37,6 +37,8 @@ namespace API.Data
         public DateTime? UpdateDay { get; set; }
 
         public int? UpdateByUserID { get; set; }
+        
+        public bool? Status { get; set; }
 
      
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
